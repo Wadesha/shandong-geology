@@ -98,6 +98,8 @@ font-size:11.5px;letter-spacing:.3px;padding:2px 7px}
 border:1px solid var(--line);padding:3px 7px;margin:5px 0;line-height:1.7;
 font-family:ui-monospace,Consolas,monospace;word-break:break-all}
 .numgrid b{color:var(--acc2);font-weight:600;margin-right:7px;letter-spacing:.5px}
+#doc p.num{font-family:ui-monospace,Consolas,monospace;font-size:11.5px;
+color:var(--mut);margin:2px 0;letter-spacing:.3px}
 #doc blockquote{margin:6px 0;padding:4px 9px;border-left:2px solid var(--line);
 color:var(--mut);font-size:13.5px}
 #doc blockquote p{margin:0 0 4px}
