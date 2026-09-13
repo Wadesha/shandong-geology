@@ -139,6 +139,17 @@ background:var(--panel);padding:7px 10px;font-size:12.5px;margin:0 0 12px}
 .tag{display:inline-block;border:1px solid var(--line);border-radius:2px;
 padding:0 4px;font-size:11px;color:var(--mut);margin-left:4px}
 
+/* 全文阅读版入口 */
+.bar .tools a.tl{color:var(--acc2);font-weight:600}
+.feat{display:flex;flex-wrap:wrap;gap:6px 12px;align-items:center;
+background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--acc2);
+border-radius:3px;padding:8px 11px;margin:0 0 14px}
+.feat b{font-size:14px;white-space:nowrap}
+.feat .k{font-size:12.5px;color:var(--mut);flex:1 1 240px;min-width:0}
+.feat a{font-size:12.5px;border:1px solid var(--line);border-radius:3px;
+padding:3px 10px;background:var(--bg);white-space:nowrap}
+.feat a:hover{border-color:var(--acc);color:var(--acc);text-decoration:none}
+
 /* 首页 */
 #pick{padding:0}
 #pick .hd{display:flex;flex-wrap:wrap;gap:8px;align-items:center;

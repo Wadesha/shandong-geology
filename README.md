@@ -25,6 +25,13 @@ Plain HTML, no images, no external dependencies, no build step at runtime.
 
 首页随机展示一篇，可一键切换，并提供全站检索入口。
 
+## 全文阅读版 / Full-text reader
+
+[`textlayer.html`](textlayer.html) —— 《山东省区域地质志》601 页文字层拼成的**单篇连续正文**，
+与「区域地质志」分篇章节互为对照：左侧 44 条目录（据书内印刷目录核对）、全文检索（`Ctrl+F`）、
+页号跳转、明暗主题、导出 TXT（[`textlayer.txt`](textlayer.txt) 亦可直接下载）。
+该页是自带版式的独立单页，不套用站点的导航壳。
+
 ## 内容来源与版权 / Sources and rights
 
 - 《山东省区域地质志》（山东省地质矿产局，1991）文本为该书的 OCR 校正 / 精校结果；
