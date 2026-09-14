@@ -31,7 +31,7 @@ a{color:var(--acc2);text-decoration:none}a:hover{text-decoration:underline}
 input{font:inherit;font-size:13px;padding:5px 9px;border-radius:7px;border:1px solid var(--line);
   background:var(--panel);color:var(--fg);outline:none}
 input:focus{border-color:var(--acc2)}
-#q{width:200px}#jumpPg{width:70px}#tocFilter{width:100%;font-size:12.5px}
+#jumpPg{width:70px}
 .btn{font:inherit;font-size:12.5px;padding:5px 10px;border-radius:7px;border:1px solid var(--line);
   background:var(--panel);color:var(--fg);cursor:pointer;white-space:nowrap}
 .btn:hover{border-color:var(--acc2);color:var(--acc2)}
@@ -98,16 +98,12 @@ mark.cur{background:var(--acc);color:#fff}
 <header class="top"><a class="btn" href="index.html" data-back=site title="返回知识库">← 知识库</a>
   <div class="brand">山东省区域地质志<small>文字层全文 · PDF 601 页 · 据精校文本</small></div>
   <span class="sp"></span>
-  <input id="q" type="search" placeholder="全文检索（Ctrl+F）">
-  <button class="btn" id="prev">‹</button><button class="btn" id="next">›</button>
-  <span class="fnd" id="finfo"></span>
   <input id="jumpPg" type="number" min="1" max="601" placeholder="页">
   <button class="btn" id="dl">导出 TXT</button>
   <button class="btn" id="themeBtn">◐ 跟随</button>
 </header>
 <div class="wrap">
   <aside class="side"><div class="ttl">目录 · 据书内印刷目录核对</div>
-<input id="tocFilter" type="search" placeholder="筛选目录…">
 <ul>
 <li><a class="l1" href="#t0">目录<small>p1</small></a></li>
 <li><a class="l1" href="#t1">CONTENTS（英文目录）<small>p3</small></a></li>
@@ -786,50 +782,12 @@ mark.cur{background:var(--acc);color:#fff}
    requestAnimationFrame(function(){hl();tick=false})},{passive:true});
  hl();
 
- var f=document.getElementById('tocFilter');
- f.addEventListener('input',function(){var q=f.value.trim().toLowerCase();
-   links.forEach(function(a){a.parentNode.style.display=(!q||a.textContent.toLowerCase().indexOf(q)>=0)?'':'none';});});
-
  var jp=document.getElementById('jumpPg');
  jp.addEventListener('keydown',function(e){if(e.key!=='Enter')return;
    var n=parseInt(jp.value,10);var el=n&&document.getElementById('pg'+n);
    if(el)el.scrollIntoView({block:'start'});});
 
  var root=document.querySelector('.doc');
- var box=document.getElementById('q'),info=document.getElementById('finfo');
- var marks=[],mi=-1;
- function clearM(){marks.forEach(function(m){var p=m.parentNode;
-     p.replaceChild(document.createTextNode(m.textContent),m);p.normalize();});
-   marks=[];mi=-1;root.normalize();}
- function run(){clearM();
-   var q=box.value.trim(); if(!q){info.textContent='';return;}
-   var w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,null),nodes=[],n;
-   while(n=w.nextNode()){if(n.nodeValue.length)nodes.push(n);}
-   var ql=q.toLowerCase();
-   nodes.forEach(function(nd){
-     var s=nd.nodeValue,sl=s.toLowerCase(),i=0,last=0,frag=null,hit=false;
-     while((i=sl.indexOf(ql,i))>=0){
-       if(!frag)frag=document.createDocumentFragment();
-       frag.appendChild(document.createTextNode(s.slice(last,i)));
-       var m=document.createElement('mark');m.textContent=s.substr(i,q.length);
-       frag.appendChild(m);marks.push(m);i+=q.length;last=i;hit=true;}
-     if(hit){frag.appendChild(document.createTextNode(s.slice(last)));nd.parentNode.replaceChild(frag,nd);}});
-   info.textContent=marks.length?('1/'+marks.length):'0 项';
-   if(marks.length){mi=0;focusM();}}
- function focusM(){marks.forEach(function(m){m.classList.remove('cur')});
-   var m=marks[mi];if(!m)return;m.classList.add('cur');
-   m.scrollIntoView({block:'center',behavior:'smooth'});
-   info.textContent=(mi+1)+'/'+marks.length;}
- function step(d){if(!marks.length)return;mi=(mi+d+marks.length)%marks.length;focusM();}
- var t=null;
- box.addEventListener('input',function(){clearTimeout(t);t=setTimeout(run,220)});
- box.addEventListener('keydown',function(e){
-   if(e.key==='Enter'){e.preventDefault();marks.length?step(e.shiftKey?-1:1):run();}
-   if(e.key==='Escape'){box.value='';clearM();info.textContent='';}});
- document.getElementById('next').onclick=function(){step(1)};
- document.getElementById('prev').onclick=function(){step(-1)};
- document.addEventListener('keydown',function(e){
-   if((e.ctrlKey||e.metaKey)&&e.key==='f'){e.preventDefault();box.focus();box.select();}});
 
  document.getElementById('dl').onclick=function(){
    var out=[];
