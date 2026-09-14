@@ -77,23 +77,25 @@ line-height:1.65;padding:3px 7px;border-radius:3px;margin:4px 0}
 padding:7px 9px;overflow:auto;font-size:12.5px;line-height:1.5;margin:6px 0;
 white-space:pre-wrap;word-break:break-word}
 #doc code{background:var(--code);padding:0 3px;border-radius:2px;font-size:.92em}
-table{border-collapse:collapse;width:100%;margin:7px 0;font-size:12.5px;
-display:block;overflow-x:auto}
-table th,table td{border:1px solid var(--line);padding:3px 6px;text-align:left;
-vertical-align:top;line-height:1.45}
-table th{background:var(--panel);font-weight:600;white-space:nowrap}
-table.prof{display:table;border-collapse:collapse;font-size:12.5px;margin:8px 0}
-table.prof caption{caption-side:top;text-align:left;font-size:10.5px;color:var(--mut);
-letter-spacing:.6px;padding:0 0 3px;font-family:ui-monospace,Consolas,monospace}
-table.prof td{border:0;border-bottom:1px solid var(--line);padding:2px 7px 2px 0;
-line-height:1.5;vertical-align:top}
-table.prof tr:first-child td{border-top:1px solid var(--line)}
-table.prof td.pn{width:2.4em;text-align:right;padding-right:8px;color:var(--acc);
+/* 行式紧凑数据列表（无表格） */
+.dt{margin:7px 0;font-size:12.5px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.dt .gh{margin:0;padding:3px 6px;background:var(--panel);font-weight:600;white-space:nowrap;
+border-bottom:1px solid var(--line)}
+.dt p{margin:0;padding:3px 6px;border-bottom:1px solid var(--line);line-height:1.45}
+.dt p:last-child{border-bottom:0}
+.prof{margin:8px 0;font-size:12.5px;border:1px solid var(--line);border-radius:3px;overflow:hidden}
+.prof .ph{margin:0;padding:2px 7px;font-size:10.5px;color:var(--mut);letter-spacing:.6px;
+background:var(--panel);border-bottom:1px solid var(--line);
+font-family:ui-monospace,Consolas,monospace}
+.prof p{margin:0;padding:2px 7px 2px 0;border-bottom:1px solid var(--line);line-height:1.5}
+.prof p:last-child{border-bottom:0}
+.prof .pn{display:inline-block;width:2.4em;text-align:right;padding-right:8px;color:var(--acc);
 font-family:ui-monospace,Consolas,monospace;white-space:nowrap}
-table.prof td.pt2{width:5.2em;text-align:right;color:var(--acc2);
+.prof .pt2{float:right;width:5.2em;text-align:right;color:var(--acc2);
 font-family:ui-monospace,Consolas,monospace;white-space:nowrap}
-table.prof tr.mk td{border-bottom:0;background:var(--panel);color:var(--mut);
+.prof p.mk{border-bottom:0;background:var(--panel);color:var(--mut);
 font-size:11.5px;letter-spacing:.3px;padding:2px 7px}
+.prof p.mk span{display:none}
 .numgrid{font-size:11.5px;color:var(--mut);background:var(--panel);
 border:1px solid var(--line);padding:3px 7px;margin:5px 0;line-height:1.7;
 font-family:ui-monospace,Consolas,monospace;word-break:break-all}

@@ -4,9 +4,7 @@
   var viewer=document.getElementById('viewer'),
       tEl=document.getElementById('picktitle'),
       mEl=document.getElementById('pickmeta'),
-      oEl=document.getElementById('btnopen'),
-      q=document.getElementById('q'),
-      grid=document.getElementById('grid');
+      oEl=document.getElementById('btnopen');
   function shuffle(a){for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));
     var t=a[i];a[i]=a[j];a[j]=t;}return a;}
 
@@ -39,17 +37,6 @@
     show(pool[Math.floor(Math.random()*pool.length)]);
   }
   document.getElementById('btnnext').addEventListener('click',next);
-
-  if(q&&grid){
-    q.addEventListener('input',function(){
-      var v=q.value.trim().toLowerCase();
-      var n=0;
-      grid.querySelectorAll('.it').forEach(function(el){
-        var hit=!v||el.dataset.s.indexOf(v)>=0;
-        el.style.display=hit?'':'none'; if(hit)n++;
-      });
-    });
-  }
 
   fetch('data/index.json').then(function(r){return r.json();}).then(function(list){
     idx=shuffle(list.slice());
